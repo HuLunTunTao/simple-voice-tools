@@ -220,31 +220,33 @@ export function PitchTrackingView() {
 
   const noteColor = currentPitch ? getNoteColor(currentPitch.note) : '#333';
 
+  if (!isDetecting) {
+    return (
+      <div className="h-full flex items-center justify-center text-center">
+        <p className="text-muted-foreground">点击开始按钮开始音高跟踪</p>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* Render PitchView when zen mode is enabled */}
       {isZenMode ? (
         <PitchView />
       ) : (
-        <div ref={containerRef} className="h-full flex flex-col">
+        <div ref={containerRef} className="h-full min-h-0 flex flex-col">
 
 
 
 
           {/* Real-time pitch tracking chart */}
-          <div className="flex-1">
+          <div className="flex-1 min-h-0">
             <div className="glass-card p-3 h-full">
-              {!isDetecting && pitchTrackingHistory.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-full text-center">
-                  <p className="text-muted-foreground">点击开始按钮开始音高跟踪</p>
-                </div>
-              ) : (
-                <canvas
-                  ref={trackingCanvasRef}
-                  className="w-full h-full"
-                  style={{ width: '100%', height: '100%' }}
-                />
-              )}
+              <canvas
+                ref={trackingCanvasRef}
+                className="w-full h-full"
+                style={{ width: '100%', height: '100%' }}
+              />
             </div>
           </div>
 

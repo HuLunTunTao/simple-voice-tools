@@ -98,7 +98,7 @@ function App() {
         'transition-all duration-300'
       )}>
         <div className="p-4 md:p-6 h-[calc(100vh-6rem)]">
-          <div className="h-full glass-card p-4 md:p-6 overflow-hidden">
+          <div className="h-full glass-card p-4 md:p-6 overflow-auto">
             {/* 渲染当前视图 */}
             {renderView()}
           </div>
